@@ -23,4 +23,9 @@ class Season extends Model
     {
         return $this->hasMany(GameStatistic::class);
     }
+
+    public static function currentSeason()
+    {
+        return Season::where('end_date', null)->orderBy('start_date', 'desc')->first() ?? 'No Active Season';
+    }
 }

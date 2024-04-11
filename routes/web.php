@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SeasonController;
 use App\Http\Controllers\TeamController;
 use App\Models\Pairing;
 use App\Models\Player;
+use App\Models\Season;
 use App\Models\Team;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +26,7 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('teams', TeamController::class)->only('index');
 Route::resource('players', PlayerController::class)->only('index');
+Route::get('/current-season', SeasonController::class)->name('currentSeason');
 
 Route::get('/standings', function () {
     return view('standings', [
