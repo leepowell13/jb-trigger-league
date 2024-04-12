@@ -5,8 +5,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SeasonController;
 use App\Http\Controllers\TeamController;
 use App\Models\Pairing;
-use App\Models\Player;
-use App\Models\Season;
 use App\Models\Team;
 use Illuminate\Support\Facades\Route;
 
