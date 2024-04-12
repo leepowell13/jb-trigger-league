@@ -8,12 +8,12 @@ use Illuminate\Http\Request;
 class SeasonController extends Controller
 {
     /**
-     * Display current active season.
+     * Display the specified resource.
      */
-    public function season()
+    public function show(Season $season)
     {
-        return view('seasons.index', [
-            'season' => Season::currentSeason(),
+        return view('seasons.show', [
+            'season' => $season
         ]);
     }
 }

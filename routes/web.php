@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PairingController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SeasonController;
@@ -24,7 +25,8 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('teams', TeamController::class)->only('index');
 Route::resource('players', PlayerController::class)->only('index');
-Route::get('/current-season', SeasonController::class)->name('currentSeason');
+Route::resource('seasons', SeasonController::class)->only(['index', 'show']);
+Route::resource('seasons.pairings', PairingController::class)->shallow();
 
 Route::get('/standings', function () {
     return view('standings', [

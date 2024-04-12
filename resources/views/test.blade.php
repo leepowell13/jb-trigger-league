@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        Week 2 Test
+        Week 1 Test
     </x-slot>
     @foreach ($pairings as $pairing)
         <table>
