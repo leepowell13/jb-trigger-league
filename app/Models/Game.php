@@ -13,7 +13,7 @@ class Game extends Model
 
     public function players(): BelongsToMany
     {
-        return $this->belongsToMany(Player::class)->withPivot(['deck_played', 'result_id'])->withTimestamps();
+        return $this->belongsToMany(Player::class)->orderBy('team_id')->withPivot(['deck_played', 'result_id'])->withTimestamps();
     }
 
     public function pairing(): BelongsTo

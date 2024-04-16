@@ -14,8 +14,17 @@ class PairingController extends Controller
     public function index(Season $season)
     {
         return view('pairings.index', [
-            'pairings' => Pairing::where('season_id', $season->id)->with(['teams', 'stage'])->get(),
+            'pairings' => Pairing::where('season_id', $season->id)->week(request('week'))->with(['teams', 'stage'])->get(),
             'season' => $season
+        ]);
+    }
+
+    public function show(Pairing $pairing)
+    {
+        $pairing->load('games.players');
+
+        return view('pairings.show', [
+            'pairing' => $pairing
         ]);
     }
 }

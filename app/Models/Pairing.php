@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\SeasonTrait;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -17,7 +18,7 @@ class Pairing extends Model
 
     public function teams(): BelongsToMany
     {
-        return $this->belongsToMany(Team::class)->withPivot(['game_wins', 'game_losses', 'pairing_result']);
+        return $this->belongsToMany(Team::class)->orderBy('id')->withPivot(['game_wins', 'game_losses', 'pairing_result']);
     }
 
     public function stage(): BelongsTo
@@ -28,6 +29,11 @@ class Pairing extends Model
     public function games(): HasMany
     {
         return $this->hasMany(Game::class);
+    }
+
+    public function scopeWeek(Builder $query, $week): void
+    {
+        $query->when($week ?? false, fn ($query, $week) => $query->where('week', $week));
     }
 
     public function teamNames(): Attribute

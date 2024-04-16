@@ -28,7 +28,7 @@
                         {{ __('Teams') }}
                     </x-nav-link>
 
-                    <x-current-season-link :active="request()->routeIs('seasons.show')">
+                    <x-current-season-link :active="request()->routeIs('seasons.pairings.index')">
                         {{ __('Season testing') }}
                     </x-current-season-link>
                 </div>
