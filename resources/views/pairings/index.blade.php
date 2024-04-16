@@ -11,3 +11,9 @@
             </tr>
         @endforeach
 </x-app-layout>
+
+{{-- 
+$team1 = $pairing->teams[0]->id
+$player1team = $pairing->games[0]->players[0]->team_id
+Make sure both match when outputting the pairings table 
+--}}

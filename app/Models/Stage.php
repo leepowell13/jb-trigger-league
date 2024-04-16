@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Stage extends Model
 {
@@ -12,7 +13,7 @@ class Stage extends Model
     public $incrementing = false;
     protected $keyType = 'string';
 
-    public function pairings()
+    public function pairings(): HasMany
     {
         return $this->hasMany(Pairing::class);
     }

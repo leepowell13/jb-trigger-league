@@ -6,23 +6,26 @@ use App\Traits\SeasonTrait;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Pairing extends Model
 {
     use HasFactory;
     use SeasonTrait;
 
-    public function teams()
+    public function teams(): BelongsToMany
     {
         return $this->belongsToMany(Team::class)->withPivot(['game_wins', 'game_losses', 'pairing_result']);
     }
 
-    public function stage()
+    public function stage(): BelongsTo
     {
         return $this->belongsTo(Stage::class);
     }
 
-    public function games()
+    public function games(): HasMany
     {
         return $this->hasMany(Game::class);
     }
